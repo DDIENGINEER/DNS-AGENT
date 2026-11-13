@@ -1,0 +1,20 @@
+[
+  {
+    "hostname": "api.example.com",
+    "record_type": "A",
+    "value": "203.0.113.10",
+    "zone": "example.com",
+    "nameserver": "ns1.example.com",
+    "platform": "EfficientIP",
+    "status": "active"
+  },
+  {
+    "hostname": "www.example.com",
+    "record_type": "CNAME",
+    "value": "web.example.net",
+    "zone": "example.com",
+    "nameserver": "ns1.example.com",
+    "platform": "Cloud DNS",
+    "status": "active"
+  }
+]

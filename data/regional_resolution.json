@@ -1,0 +1,23 @@
+[
+  {
+    "hostname": "api.example.com",
+    "region": "India",
+    "resolver": "10.1.1.10",
+    "resolved_ip": "10.10.10.25",
+    "status": "success"
+  },
+  {
+    "hostname": "api.example.com",
+    "region": "Europe",
+    "resolver": "10.2.1.10",
+    "resolved_ip": "10.10.10.25",
+    "status": "success"
+  },
+  {
+    "hostname": "api.example.com",
+    "region": "US",
+    "resolver": "10.3.1.10",
+    "resolved_ip": "10.10.10.50",
+    "status": "different_response"
+  }
+]

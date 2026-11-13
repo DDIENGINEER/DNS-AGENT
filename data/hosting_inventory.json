@@ -1,0 +1,21 @@
+[
+  {
+    "zone": "example.com",
+    "platform": "EfficientIP",
+    "nameservers": [
+      "ns1.example.com",
+      "ns2.example.com"
+    ],
+    "region": "India",
+    "environment": "Private"
+  },
+  {
+    "zone": "example.net",
+    "platform": "Cloud DNS",
+    "nameservers": [
+      "ns1.example.net"
+    ],
+    "region": "Global",
+    "environment": "Public"
+  }
+]
