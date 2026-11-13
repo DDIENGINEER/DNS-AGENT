@@ -1,0 +1,325 @@
+
+PS C:\Users\Administrator\Desktop\DNS AGENT> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+PS C:\Users\Administrator\Desktop\DNS AGENT> .\venv\Scripts\Activate.ps1                               
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python -m pip install --upgrade pip
+Requirement already satisfied: pip in .\venv\Lib\site-packages (26.2.2)
+Collecting pip
+Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 6.2 MB/s  0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.2.2
+    Uninstalling pip-26.2.2:
+      Successfully uninstalled pip-26.2.2
+Successfully installed pip-26.3
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> pip  install openai fastapi uvicorn python-dotenv pydantic
+Collecting openai
+  Downloading openai-3.50.0-py3-none-any.whl.metadata (45 kB)
+Collecting fastapi
+  Downloading fastapi-0.162.5-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting python-dotenv
+  Using cached python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting pydantic
+  Using cached pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)
+Collecting anyio<5,>=4.10.0 (from openai)
+  Using cached anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting httpx2<3,>=2.12.0 (from openai)
+  Using cached httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting jiter<1,>=0.16.0 (from openai)
+  Using cached jiter-0.19.0-cp314-cp314-win_amd64.whl.metadata (5.3 kB)
+Collecting sniffio (from openai)
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting typing-extensions<5,>=4.14 (from openai)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic)
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.4 (from pydantic)
+  Using cached pydantic_core-2.50.4-cp314-cp314-win_amd64.whl.metadata (6.7 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic)
+  Using cached typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting idna>=2.8 (from anyio<5,>=4.10.0->openai)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting httpcore2==2.16.0 (from httpx2<3,>=2.12.0->openai)
+  Using cached httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting truststore>=0.10 (from httpx2<3,>=2.12.0->openai)
+  Using cached truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2<3,>=2.12.0->openai)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting starlette>=0.46.0 (from fastapi)
+  Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi)
+  Downloading annotated_doc-0.0.6-py3-none-any.whl.metadata (6.5 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi)
+  Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+Collecting click>=7.0 (from uvicorn)
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Downloading openai-3.50.0-py3-none-any.whl (2.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 21.7 MB/s  0:00:00
+Using cached pydantic-2.14.3-py3-none-any.whl (494 kB)
+Using cached pydantic_core-2.50.4-cp314-cp314-win_amd64.whl (2.3 MB)
+Using cached anyio-4.16.0-py3-none-any.whl (134 kB)
+Using cached httpx2-2.16.0-py3-none-any.whl (97 kB)
+Using cached httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Using cached jiter-0.19.0-cp314-cp314-win_amd64.whl (225 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading fastapi-0.162.5-py3-none-any.whl (151 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Using cached python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading annotated_doc-0.0.6-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+Using cached truststore-0.10.5-py3-none-any.whl (19 kB)
+Using cached typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Installing collected packages: typing-extensions, truststore, sniffio, python-dotenv, jiter, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, opentelemetry-api, httpcore2, anyio, starlette, pydantic, httpx2, openai, fastapi
+Successfully installed annotated-doc-0.0.6 annotated-types-0.8.0 anyio-4.16.0 click-8.5.1 fastapi-0.162.5 h11-0.16.0 httpcore2-2.16.0 httpx2-2.16.0 idna-3.20 jiter-0.19.0 openai-3.50.0 opentelemetry-api-1.45.2 pydantic-2.14.3 pydantic-core-2.50.4 python-dotenv-1.2.4 sniffio-1.3.1 starlette-1.10.0 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.5 uvicorn-0.54.0
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> pip list 
+Package           Version
+----------------- -------
+annotated-doc     0.0.6
+annotated-types   0.8.0
+anyio             4.16.0
+click             8.5.1
+fastapi           0.162.5
+h11               0.16.0
+httpcore2         2.16.0
+httpx2            2.16.0
+idna              3.20
+jiter             0.19.0
+openai            3.50.0
+opentelemetry-api 1.45.2
+pip               26.3
+pydantic          2.14.3
+python-dotenv     1.2.4
+sniffio           1.3.1
+starlette         1.10.0
+truststore        0.10.5
+typing_extensions 4.16.0
+typing-inspection 0.4.5
+uvicorn           0.54.0
+
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python -c "import json,pathlib;[json.load(open(p, encoding='utf-8')) for p in pathlib.Path('data').glob('*.json')]; print('All Good')"
+All Good
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_tools.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\DNS AGENT\test_tools.py", line 1, in <module>
+    from app.tools import (
+    ...<4 lines>...
+    )
+    BASE_DIR = Path(_file_).resolve().parent.parent
+                    ^^^^^^
+NameError: name '_file_' is not defined. Did you mean: '__file__'?
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_tools.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\DNS AGENT\test_tools.py", line 1, in <module>
+    from app.tools import (
+    ...<4 lines>...
+  File "C:\Users\Administrator\Desktop\DNS AGENT\app\tools.py", line 5, in <module>
+    BASE_DIR = Path(_file_).resolve().parent.parent
+                    ^^^^^^
+NameError: name '_file_' is not defined. Did you mean: '__file__'?
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_tools.py
+
+===== PRIVATE DNS =====
+[{'hostname': 'api.example.com', 'record_type': 'A', 'value': '10.10.10.25', 'zone': 'example.com', 'view': 'INTERNAL', 'platform': 'EfficientIP', 'region': 'India', 'status': 'active'}]
+
+===== PUBLIC DNS =====
+[{'hostname': 'api.example.com', 'record_type': 'A', 'value': '203.0.113.10', 'zone': 'example.com', 'nameserver': 'ns1.example.com', 'platform': 'EfficientIP', 'status': 'active'}]
+
+===== REGIONAL VALIDATION =====
+[{'hostname': 'api.example.com', 'region': 'India', 'resolver': '10.1.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'Europe', 'resolver: '10.2.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'US', 'resolver': '10.3.1.10', 'resolved_ip': '10.10.10.50', 'status': 'differentresponse'}]
+
+===== DNS HOSTING =====
+[{'zone': 'example.com', 'platform': 'EfficientIP', 'nameservers': ['ns1.example.com', 'ns2.example.com'], 'region': 'India', 'environment': 'Private'}]
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_agent.py
+
+[AGENT TOOL] search_private_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'record_type': 'A', 'value': '10.10.10.25', 'zone': 'example.com', 'view': 'INTERNAL', 'platform': 'EfficientIP', 'region': 'India', 'status': 'actie'}]
+
+[AGENT TOOL] search_public_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'record_type': 'A', 'value': '203.0.113.10', 'zone': 'example.com', 'nameserver': 'ns1.example.com', 'platform': 'EfficientIP', 'status': 'active'}]
+
+[AGENT TOOL] validate_regional_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'region': 'India', 'resolver': '10.1.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'Europe', resolver': '10.2.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'US', 'resolver': '10.3.1.10', 'resolved_ip': '10.10.10.50', 'status': 'ifferent_response'}]
+
+[AGENT TOOL] identify_dns_hosting
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'zone': 'example.com', 'platform': 'EfficientIP', 'nameservers': ['ns1.example.com', 'ns2.example.com'], 'region': 'India', 'environment': 'Private'}]
+
+===== DNS AI ASSISTANT =====
+
+## 1. Hostname
+
+`api.example.com`
+
+## 2. Private DNS information
+
+| Record Type | Value | Zone | View | Platform | Region | Status |
+|---|---:|---|---|---|---|---|
+| A | `10.10.10.25` | `example.com` | `INTERNAL` | EfficientIP | India | active |
+
+## 3. Public DNS information
+| Record Type | Value | Zone | Nameserver | Platform | Status |
+|---|---:|---|---|---|---|
+| A | `203.0.113.10` | `example.com` | `ns1.example.com` | EfficientIP | active |
+
+## 4. Regional resolution
+
+| Region | Resolver | Resolved IP | Status |
+|---|---|---:|---|
+| India | `10.1.1.10` | `10.10.10.25` | success |
+| Europe | `10.2.1.10` | `10.10.10.25` | success |
+| US | `10.3.1.10` | `10.10.10.50` | different_response |
+
+## 5. DNS hosting information
+
+| Zone | Platform | Nameservers | Region | Environment |
+|---|---|---|---|---|
+| `example.com` | EfficientIP | `ns1.example.com`, `ns2.example.com` | India | Private |
+
+## 6. Observations and recommendations
+
+- `api.example.com` exists in both private and public DNS.
+- Private DNS resolves to `10.10.10.25`.
+- Public DNS resolves to `203.0.113.10`.
+- Regional private DNS resolution is not fully consistent:
+  - India and Europe resolve to `10.10.10.25`.
+  - US resolves to `10.10.10.50`, which differs from the private DNS record found in the internal view.
+- DNS hosting appears to be on EfficientIP.
+- Recommendation: Review the US regional DNS configuration or split-horizon/view policy to confirm whether `10.10.10.50` is intentional.
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_agent.py
+
+[AGENT TOOL] search_private_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] search_public_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] validate_regional_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+
+[AGENT TOOL] identify_dns_hosting
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+===== DNS AI ASSISTANT =====
+
+1. **Hostname**  
+   `api.com`
+
+2. **Private DNS information**  
+   No private DNS records found.
+
+3. **Public DNS information**  
+   No public DNS records found.
+
+4. **Regional resolution**  
+   No regional DNS resolution data found.  
+   Resolution could not be validated across regions.
+
+5. **DNS hosting information**  
+   DNS hosting platform could not be identified.
+
+6. **Observations and recommendations**  
+   - `api.com` does not appear in the available mock DNS dataset.
+   - No private or public records were returned.
+   - No regional resolution differences could be evaluated.
+   - If this hostname is expected to resolve, verify that it exists in the relevant DNS zone and that records are published correctly.
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> python .\test_agent.py
+
+[AGENT TOOL] search_private_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] search_public_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] validate_regional_dns
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] identify_dns_hosting
+[ARGUMENTS] {'hostname': 'api.com'}
+[RESULT] []
+
+[AGENT TOOL] search_private_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'record_type': 'A', 'value': '10.10.10.25', 'zone': 'example.com', 'view': 'INTERNAL', 'platform': 'EfficientIP', 'region': 'India', 'status': 'active'}]
+
+[AGENT TOOL] search_public_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'record_type': 'A', 'value': '203.0.113.10', 'zone': 'example.com', 'nameserver': 'ns1.example.com', 'platform': 'EfficientIP', 'status': 'active'}]
+[AGENT TOOL] validate_regional_dns
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'hostname': 'api.example.com', 'region': 'India', 'resolver': '10.1.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'Europe', 'resolver': '10.2.1.10', 'resolved_ip': '10.10.10.25', 'status': 'success'}, {'hostname': 'api.example.com', 'region': 'US', 'resolver': '10.3.1.10', 'resolved_ip': '10.10.10.50', 'status': 'different_response'}]
+
+[AGENT TOOL] identify_dns_hosting
+[ARGUMENTS] {'hostname': 'api.example.com'}
+[RESULT] [{'zone': 'example.com', 'platform': 'EfficientIP', 'nameservers': ['ns1.example.com', 'ns2.example.com'], 'region': 'India', 'environment': 'Private'}]
+
+===== DNS AI ASSISTANT =====
+
+## 1. Hostname: `api.com`
+
+### 2. Private DNS information
+No private DNS records found.
+
+### 3. Public DNS information
+No public DNS records found.
+
+### 4. Regional resolution
+No regional DNS resolution data found.
+
+### 5. DNS hosting information
+No DNS hosting information found.
+
+### 6. Observations and recommendations
+- `api.com` does not appear in the available private or public DNS simulation dataset.
+- No regional resolution could be validated.
+- Confirm whether `api.com` is the intended hostname or whether it should be under another managed zone.
+
+---
+
+## 1. Hostname: `api.example.com`
+
+### 2. Private DNS information
+| Record Type | Value | Zone | View | Platform | Region | Status |
+
+### 3. Public DNS information
+| Record Type | Value | Zone | Nameserver | Platform | Status |
+|---|---:|---|---|---|---|
+| A | `203.0.113.10` | `example.com` | `ns1.example.com` | EfficientIP | active |
+
+### 4. Regional resolution
+| Region | Resolver | Resolved IP | Status |
+|---|---|---:|---|
+| India | `10.1.1.10` | `10.10.10.25` | success |
+| Europe | `10.2.1.10` | `10.10.10.25` | success |
+| US | `10.3.1.10` | `10.10.10.50` | different_response |
+
+### 5. DNS hosting information
+| Zone | Platform | Nameservers | Region | Environment |
+|---|---|---|---|---|
+| `example.com` | EfficientIP | `ns1.example.com`, `ns2.example.com` | India | Private |
+
+### 6. Observations and recommendations
+- `api.example.com` exists in both private and public DNS.
+- Private DNS resolves to `10.10.10.25`.
+- Public DNS resolves to `203.0.113.10`.
+- Regional private resolution differs in the US:
+  - India and Europe resolve to `10.10.10.25`.
+  - US resolves to `10.10.10.50`.
+- This regional difference should be reviewed to confirm whether the US response is intentional, such as geo-based routing, split-horizon behavior, or a stale/incorrect record.
+- DNS hosting for `example.com` is identified as EfficientIP.
+(venv) PS C:\Users\Administrator\Desktop\DNS AGENT> pip freeze >requirements.txt
